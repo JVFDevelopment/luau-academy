@@ -3621,14 +3621,16 @@ li:has(> .todo-box)::marker {
 }
 
 .cert-foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 2cqw;
   width: 80%;
   margin-top: 3.5cqw;
 }
 
 .cert-sig {
+  justify-self: center;
   text-align: center;
   font-size: 1.3cqw;
   color: #5c6478;
