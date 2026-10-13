@@ -1,0 +1,15 @@
+{
+  "name": "luau-academy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A free Luau course brought to you by Koala, Roblox developer of 5+ years.",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "node serve.js",
+    "dev": "node build.js && node serve.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}
