@@ -782,6 +782,7 @@ class Renderer {
         const it = items[idx];
         const complex = it.lines.some((x) => x === '' || /^\s*```/.test(x) || /^:::/.test(x));
         let inner = complex ? this.nested(it.lines) : this.inline(it.lines.join(' '));
+        inner = inner.replace(/^\[ \] /, '<span class="todo-box" aria-hidden="true"></span>');
         idx++;
         if (idx < items.length && items[idx].indent > base) {
           const sub = build(idx, items[idx].indent);
@@ -1583,7 +1584,7 @@ function build() {
     predict: modules.reduce((s, m) => s + m.predictIds.length, 0),
     challenges: modules.reduce((s, m) => s + m.challenges.length, 0),
     sections: modules.reduce((s, m) => s + m.headings.filter((h) => h.level === 2).length, 0),
-    minutes: modules.reduce((s, m) => s + (parseInt(m.time, 10) || 0), 0),
+    minutes: modules.reduce((s, m) => s + (parseInt(m.time, 10) || 0) * (/hour/.test(m.time || '') ? 60 : 1), 0),
   };
   const course = {
     name: SITE.name,
